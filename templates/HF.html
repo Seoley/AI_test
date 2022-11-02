@@ -49,7 +49,7 @@
             ECG 심부전 모델 테스트
           </div>
         </div>
-        <form action="/main/CAresult/" method="post" enctype="multipart/form-data">
+        <form action="/main/HFresult/" method="post" enctype="multipart/form-data">
           <div class = "content_inner_box">
             <div class="content_inner_layout">
               
@@ -78,17 +78,17 @@
                     테스트 조건
                   </h4>
                   
-                    <div class="form-group" style="padding-bottom: 20px;">
-                      <label for="inputPassword2" class="sr-only">테스트 당 데이터 갯수</label>
-                      <input name="length" type="text" class="form-control" id="inputEmail3" placeholder="ex) 100개, 300개 / 최대 1000개">
-                    </div>
-                    <div class="form-group" style="padding-bottom: 20px;">
-                      <label for="inputPassword2" class="sr-only">테스트 횟수 </label>
-                      <input name="sets" type="text" class="form-control" id="inputEmail3" placeholder="ex) 5회, 10회 / 최대 20회">
-                    </div>
-                    <div style="text-align:center;">
-                      <button type="submit" class="btn btn-outline-light btn-lg btn-primary" style="width:80%; max-width: 600px;">테스트 시작</button>
-                    </div>
+                  <div class="form-group" style="padding-bottom: 20px;">
+                    <label for="inputPassword2" class="sr-only">테스트 당 데이터 갯수</label>
+                    <input name="length" type="text" class="form-control" id="inputEmail3" placeholder="ex) 100개, 300개 / 최대 1000개" value="{% if length != None %} {{length}} {% endif %}">
+                  </div>
+                  <div class="form-group" style="padding-bottom: 20px;">
+                    <label for="inputPassword2" class="sr-only">테스트 횟수 </label>
+                    <input name="sets" type="text" class="form-control" id="inputEmail3" placeholder="ex) 5회, 10회 / 최대 20회" value="{% if sets != None %} {{sets}} {% endif %}">
+                  </div>
+                  <div style="text-align:center;">
+                    <button type="submit" class="btn btn-outline-light btn-lg btn-primary" style="width:80%; max-width: 600px;">테스트 시작</button>
+                  </div>
                   
                   
                   

@@ -60,7 +60,7 @@ class HFtest():
         self.length = int(length)
         self.sets = int(sets)
         self.data = pd.read_csv(file)
-        self.model = tf.keras.models.load_model('static/model/HFModel_v1.2_acc0.86_221021.h5.h5')
+        self.model = tf.keras.models.load_model('static/model/HFModel_v1.2_acc0.86_221021.h5')
         # self.pred_classes = ['정상','비정상']
         print("Load ECG model")
         
