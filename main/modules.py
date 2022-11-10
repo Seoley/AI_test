@@ -3,6 +3,8 @@ import tensorflow as tf
 import json
 import pandas as pd
 import random
+import datetime
+import os
 
 # 부정맥 판단 모델
 class CAtest():
@@ -16,9 +18,16 @@ class CAtest():
         print("Load ECG model")
         
     def get_result(self):
+        model_name = "Arrhythmia"
+        now = datetime.datetime.now()
+        format = '%Y%m%d%H%M%S%Z'
+        file_folder = datetime.datetime.strftime(now,format)
+        os.mkdir('media/'+file_folder)
+
 
         loss_list = []
         metric_list = []
+        file_list = []
 
         x_data = self.data.iloc[:,:-1]
         y_data = self.data.iloc[:,-1]
@@ -34,8 +43,8 @@ class CAtest():
         for i in range(self.sets):
             rand_length = random.randint(0,len(x_data)-self.length)
             data_length = self.length
-            sample_list = range(rand_length-300,rand_length)
-            sample_list = list(sample_list)
+            # sample_list = range(rand_length-300,rand_length)
+            # sample_list = list(sample_list)
 
             x_target = x_data[rand_length:rand_length+data_length]
             y_target = y_data[rand_length:rand_length+data_length]
@@ -48,10 +57,16 @@ class CAtest():
             loss_count = loss_count + loss
             metric_count = metric_count + metric_val
 
+            save_data = self.data[rand_length:rand_length+data_length]
+            file_name = model_name + "_test"+str(i)+"_data"+str(data_length)+"_acc"+str(round(metric_val,3))
+            save_data.to_csv('media/'+file_folder+'/'+file_name+'.csv')
+            file_list.append(file_name)
+
         avg_loss = loss_count/self.sets
         avg_metric = metric_count/self.sets
         
-        return loss_list, metric_list, avg_loss, avg_metric
+        return loss_list, metric_list, avg_loss, avg_metric, file_folder, file_list
+    
     
 # 심부전 판단 모델
 class HFtest():
@@ -65,9 +80,16 @@ class HFtest():
         print("Load ECG model")
         
     def get_result(self):
+        model_name = "HeartFailure"
+        now = datetime.datetime.now()
+        format = '%Y%m%d%H%M%S%Z'
+        file_folder = datetime.datetime.strftime(now,format)
+        os.mkdir('media/'+file_folder)
+
 
         loss_list = []
         metric_list = []
+        file_list = []
 
         x_data = self.data.iloc[:,:-1]
         y_data = self.data.iloc[:,-1]
@@ -83,8 +105,8 @@ class HFtest():
         for i in range(self.sets):
             rand_length = random.randint(0,len(x_data)-self.length)
             data_length = self.length
-            sample_list = range(rand_length-300,rand_length)
-            sample_list = list(sample_list)
+            # sample_list = range(rand_length-300,rand_length)
+            # sample_list = list(sample_list)
 
             x_target = x_data[rand_length:rand_length+data_length]
             y_target = y_data[rand_length:rand_length+data_length]
@@ -97,8 +119,13 @@ class HFtest():
             loss_count = loss_count + loss
             metric_count = metric_count + metric_val
 
+            save_data = self.data[rand_length:rand_length+data_length]
+            file_name = model_name + "_test"+str(i)+"_data"+str(data_length)+"_acc"+str(round(metric_val,3))
+            save_data.to_csv('media/'+file_folder+'/'+file_name+'.csv')
+            file_list.append(file_name)
+
         avg_loss = loss_count/self.sets
         avg_metric = metric_count/self.sets
         
-        return loss_list, metric_list, avg_loss, avg_metric
+        return loss_list, metric_list, avg_loss, avg_metric, file_folder, file_list
     

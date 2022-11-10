@@ -1,0 +1,39 @@
+{
+  "D10_0001": {
+    "raw_data_id": "D09_0003",
+    "raw_data_name": "Combined measurement of ECG, Breathing and Seismocardiograms",
+    "sampling_rate": 5000,
+    "class_num": 2,
+    "classes": {
+      "normal": 0,
+      "abnormal": 1
+    },
+    "info": "",
+    "source": "https://physionet.org/content/cebsdb/1.0.0/",
+    "license": "Open Data Commons Attribution License v1.0"
+  },
+  "D10_0002": {
+    "raw_data_id": "D09_0004",
+    "raw_data_name": "Autonomic Aging: A dataset to quantify changes of cardiovascular autonomic function during healthy aging",
+    "sampling_rate": 1000,
+    "class_num": 1,
+    "classes": {
+      "normal": 0
+    },
+    "info": "",
+    "source": "https://physionet.org/content/autonomic-aging-cardiovascular/1.0.0//",
+    "license": "Open Data Commons Attribution License v1.0"
+  },
+  "D10_0003": {
+    "raw_data_id": "D09_0006",
+    "raw_data_name": "BIDMC Congestive Heart Failure Database",
+    "sampling_rate": 250,
+    "class_num": 1,
+    "classes": {
+      "congestive heart failure": 0
+    },
+    "info": "",
+    "source": "https://physionet.org/content/chfdb/1.0.0/",
+    "license": "Open Data Commons Attribution License v1.0"
+  }
+}

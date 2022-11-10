@@ -103,24 +103,30 @@
             <div class="col-12">
               <tbody>
 
-                  <table class="table">
-                    <thead class="bg-dark text-white">
-                      <tr>
-                        <th scope="col">COUNT</th>
-                        <th scope="col">LOSS</th>
-                        <th scope="col">METRIC</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% for item in eval_list %}
-                        <tr>
-                          <th scope="row">{{ item.count }}</th>
-                          <td>{{ item.loss }}</td>
-                          <td>{{ item.metric }}</td>
-                        </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
+                <table class="table">
+                  <thead class="bg-dark text-white">
+                    <tr>
+                      <th scope="col">COUNT</th>
+                      <th scope="col">LOSS</th>
+                      <th scope="col">METRIC</th>
+                      <th scope="col">FILE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in eval_list %}
+                    <tr>
+                      <th scope="row">{{ item.count }}</th>
+                      <td>{{ item.loss }}</td>
+                      <td>{{ item.metric }}</td>
+                      <td>
+                        {% if item.count != "평균"%}
+                        <a href = "/main/download/?file_folder={{item.file_folder}}&file_name={{item.file_name}}">파일 저장
+                        {% endif %}
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
 
                 <!-- <tr>
                   <td class='text-truncate'>{{ item.loss }} </td>
