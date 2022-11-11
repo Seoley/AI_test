@@ -59,7 +59,8 @@ class CAtest():
 
             save_data = self.data[rand_length:rand_length+data_length]
             file_name = model_name + "_test"+str(i)+"_data"+str(data_length)+"_acc"+str(round(metric_val,3))
-            save_data.to_csv('media/'+file_folder+'/'+file_name+'.csv')
+            print(file_name)
+            save_data.to_csv('media/'+file_folder+'/'+file_name+'.csv', index=None)
             file_list.append(file_name)
 
         avg_loss = loss_count/self.sets
@@ -121,7 +122,7 @@ class HFtest():
 
             save_data = self.data[rand_length:rand_length+data_length]
             file_name = model_name + "_test"+str(i)+"_data"+str(data_length)+"_acc"+str(round(metric_val,3))
-            save_data.to_csv('media/'+file_folder+'/'+file_name+'.csv')
+            save_data.to_csv('media/'+file_folder+'/'+file_name+'.csv', index=None)
             file_list.append(file_name)
 
         avg_loss = loss_count/self.sets

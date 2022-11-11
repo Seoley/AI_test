@@ -48,7 +48,7 @@ class CA_result(APIView):
             length = request.POST['length']
             sets = request.POST['sets']
 
-            controler = HFtest(metrics,length,sets,file)
+            controler = CAtest(metrics,length,sets,file)
             loss_list, metric_list, avg_loss, avg_metric, file_folder, file_list = controler.get_result()
             eval_list = []
 
