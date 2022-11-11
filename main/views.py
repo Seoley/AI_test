@@ -42,7 +42,7 @@ class CA_model(View):
 class CA_result(APIView):
     @csrf_exempt
     def post(self, request):
-        # try:
+        try:
             metrics = request.POST['metrics']
             file = request.FILES.__getitem__('file')
             length = request.POST['length']
@@ -74,9 +74,9 @@ class CA_result(APIView):
             print("부정맥 테스트 종료")
 
             return response
-        # except:
-        #     print("CA 페이지 에러")
-        #     return redirect('/main/CAtest/')
+        except:
+            print("CA 페이지 에러")
+            return redirect('/main/CAtest/')
 
 
 
