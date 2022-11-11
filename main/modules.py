@@ -51,8 +51,8 @@ class CAtest():
 
             loss, metric_val = self.model.evaluate(x_target.astype(np.float32),y_target.astype(np.float32))
             
-            loss_list.append(loss)
-            metric_list.append(metric_val)
+            loss_list.append(round(loss,3))
+            metric_list.append(round(metric_val,3))
 
             loss_count = loss_count + loss
             metric_count = metric_count + metric_val
@@ -113,8 +113,8 @@ class HFtest():
 
             loss, metric_val = self.model.evaluate(x_target.astype(np.float32),y_target.astype(np.float32))
             
-            loss_list.append(loss)
-            metric_list.append(metric_val)
+            loss_list.append(round(loss,3))
+            metric_list.append(round(metric_val,3))
 
             loss_count = loss_count + loss
             metric_count = metric_count + metric_val
